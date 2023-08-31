@@ -4,7 +4,8 @@ services:
   api:
     build: app/
     container_name: mygoapp
-    network_mode: "host"
+    ports:
+      - "8080:8080"
     restart: unless-stopped
     depends_on:
     - db
@@ -14,12 +15,14 @@ services:
   db:
     build: redis/
     container_name: redisdb
-    network_mode: "host"
+    ports:
+      - "6379:6379"
     restart: unless-stopped
 
 
   web-server:
     build: nginx/
     container_name: mynginxproxy
-    network_mode: "host"
+    ports:
+      - "8089:80"
     restart: unless-stopped
