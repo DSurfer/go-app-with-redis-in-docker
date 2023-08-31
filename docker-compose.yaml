@@ -6,6 +6,9 @@ services:
     container_name: mygoapp
     ports:
       - "8080:8080"
+    volumes:
+      - "/home/msurfer/project_root/app/src:/app"
+    command: bash -c "cd /app/cmd/ && go get -d -v && go build -o main && ./main"
     restart: unless-stopped
     depends_on:
     - db
@@ -25,4 +28,6 @@ services:
     container_name: mynginxproxy
     ports:
       - "8089:80"
+    volumes:
+      - "/home/msurfer/project_root/nginx/nginx.conf:/etc/nginx/conf.d/default.conf"
     restart: unless-stopped

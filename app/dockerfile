@@ -1,13 +1,3 @@
 FROM golang:bullseye
 
-RUN apt-get update
-
-WORKDIR /app
-
-COPY . .
-
 EXPOSE 8080
-
-RUN cd src/cmd/ && go get -d -v && go build -o main
-
-CMD [ "./src/cmd/main" ]
