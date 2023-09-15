@@ -28,7 +28,6 @@ variable "compute_flavor" {
 
 variable "key_pair_name" {
   type = string
-  default = "testing"
 }
 
 variable "availability_zone_name" {
